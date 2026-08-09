@@ -1,0 +1,37 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import GalleryCard from "../../components/GalleryCard.astro";
+import SectionHeader from "../../components/SectionHeader.astro";
+import { getCollection, type CollectionEntry } from "astro:content";
+
+const galleries = (await getCollection("galleries")).sort(
+    (a: CollectionEntry<"galleries">, b: CollectionEntry<"galleries">) =>
+        b.data.date.getTime() - a.data.date.getTime(),
+);
+---
+
+<BaseLayout
+    title="Galleries — jacob.dev"
+    description="Photo galleries from places I've visited."
+>
+    <div class="mx-auto max-w-6xl px-4 py-12 sm:px-6 lg:px-8">
+        <SectionHeader
+            title="Galleries"
+            description="Photo galleries from places I've visited."
+        />
+
+        {
+            galleries.length === 0 ? (
+                <p class="text-neutral-600">
+                    No galleries yet. Check back soon.
+                </p>
+            ) : (
+                <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+                    {galleries.map((gallery: CollectionEntry<"galleries">) => (
+                        <GalleryCard gallery={gallery} />
+                    ))}
+                </div>
+            )
+        }
+    </div>
+</BaseLayout>

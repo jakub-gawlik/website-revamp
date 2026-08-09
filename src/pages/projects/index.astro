@@ -1,0 +1,37 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import ProjectCard from "../../components/ProjectCard.astro";
+import SectionHeader from "../../components/SectionHeader.astro";
+import { getCollection, type CollectionEntry } from "astro:content";
+
+const projects = (await getCollection("projects")).sort(
+    (a: CollectionEntry<"projects">, b: CollectionEntry<"projects">) =>
+        b.data.date.getTime() - a.data.date.getTime(),
+);
+---
+
+<BaseLayout
+    title="Projects — jacob.dev"
+    description="A collection of software projects, experiments and open-source work."
+>
+    <div class="mx-auto max-w-6xl px-4 py-12 sm:px-6 lg:px-8">
+        <SectionHeader
+            title="Projects"
+            description="A collection of software projects, experiments and open-source work."
+        />
+
+        {
+            projects.length === 0 ? (
+                <p class="text-neutral-600">
+                    No projects yet. Check back soon.
+                </p>
+            ) : (
+                <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+                    {projects.map((project: CollectionEntry<"projects">) => (
+                        <ProjectCard project={project} />
+                    ))}
+                </div>
+            )
+        }
+    </div>
+</BaseLayout>
