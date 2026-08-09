@@ -1,5 +1,6 @@
 ---
 import "../styles/global.css";
+import ThemeToggle from "../components/ThemeToggle.astro";
 
 interface Props {
     title: string;
@@ -27,39 +28,57 @@ const nav = [
         <meta name="generator" content={Astro.generator} />
         <meta name="description" content={description} />
         <title>{title}</title>
+        <script is:inline>
+            (function () {
+                const theme = localStorage.getItem("theme");
+                if (
+                    theme === "dark" ||
+                    (!theme &&
+                        window.matchMedia("(prefers-color-scheme: dark)")
+                            .matches)
+                ) {
+                    document.documentElement.classList.add("dark");
+                }
+            })();
+        </script>
     </head>
-    <body class="min-h-screen flex flex-col bg-white text-neutral-900">
-        <header class="border-b border-neutral-200">
+    <body class="min-h-screen flex flex-col bg-background text-foreground">
+        <header
+            class="border-b border-pastel-black/10 dark:border-pastel-white/10"
+        >
             <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
                 <nav class="flex items-center justify-between py-4">
                     <a href="/" class="text-lg font-semibold tracking-tight"
                         >jacob.dev</a
                     >
-                    <ul class="flex items-center gap-6 text-sm font-medium">
-                        {
-                            nav.map((item) => {
-                                const isActive =
-                                    item.href === "/"
-                                        ? pathname === "/"
-                                        : pathname.startsWith(item.href);
-                                return (
-                                    <li>
-                                        <a
-                                            href={item.href}
-                                            class:list={[
-                                                "transition-colors hover:text-neutral-600",
-                                                isActive
-                                                    ? "text-neutral-900"
-                                                    : "text-neutral-500",
-                                            ]}
-                                        >
-                                            {item.label}
-                                        </a>
-                                    </li>
-                                );
-                            })
-                        }
-                    </ul>
+                    <div class="flex items-center gap-6">
+                        <ul class="flex items-center gap-6 text-sm font-medium">
+                            {
+                                nav.map((item) => {
+                                    const isActive =
+                                        item.href === "/"
+                                            ? pathname === "/"
+                                            : pathname.startsWith(item.href);
+                                    return (
+                                        <li>
+                                            <a
+                                                href={item.href}
+                                                class:list={[
+                                                    "transition-colors hover:text-foreground/70",
+                                                    isActive
+                                                        ? "text-foreground"
+                                                        : "text-foreground/60",
+                                                ]}
+                                            >
+                                                {item.label}
+                                            </a>
+                                        </li>
+                                    );
+                                })
+                            }
+                        </ul>
+                        <ThemeToggle />
+                    </div>
                 </nav>
             </div>
         </header>
@@ -68,9 +87,11 @@ const nav = [
             <slot />
         </main>
 
-        <footer class="border-t border-neutral-200">
+        <footer
+            class="border-t border-pastel-black/10 dark:border-pastel-white/10"
+        >
             <div class="mx-auto max-w-6xl px-4 py-8 sm:px-6 lg:px-8">
-                <p class="text-sm text-neutral-500">
+                <p class="text-sm text-foreground/60">
                     &copy; {new Date().getFullYear()} jacob.dev. All rights reserved.
                 </p>
             </div>

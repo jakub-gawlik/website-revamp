@@ -11,11 +11,11 @@ const { title, description, date, status, technologies, cover } = project.data;
 ---
 
 <article
-    class="group flex flex-col overflow-hidden rounded-lg border border-neutral-200 bg-white transition-shadow hover:shadow-md"
+    class="group flex flex-col overflow-hidden rounded-lg border border-pastel-black/10 bg-pastel-white transition-shadow hover:shadow-md dark:border-pastel-white/10 dark:bg-pastel-black/30"
 >
     {
         cover && (
-            <div class="aspect-video overflow-hidden bg-neutral-100">
+            <div class="aspect-video overflow-hidden bg-pastel-black/5 dark:bg-pastel-white/5">
                 <Image
                     src={cover}
                     alt={title}
@@ -28,7 +28,7 @@ const { title, description, date, status, technologies, cover } = project.data;
     }
     <div class="flex flex-1 flex-col p-5">
         <div
-            class="mb-2 flex items-center gap-2 text-xs font-medium text-neutral-500"
+            class="mb-2 flex items-center gap-2 text-xs font-medium text-foreground/60"
         >
             <span class="uppercase tracking-wider">{status}</span>
             <span>&middot;</span>
@@ -46,14 +46,14 @@ const { title, description, date, status, technologies, cover } = project.data;
                 {title}
             </a>
         </h3>
-        <p class="mb-4 flex-1 text-sm leading-relaxed text-neutral-600">
+        <p class="mb-4 flex-1 text-sm leading-relaxed text-foreground/70">
             {description}
         </p>
         {
             technologies.length > 0 && (
                 <ul class="flex flex-wrap gap-2">
                     {technologies.map((tech: string) => (
-                        <li class="rounded-full bg-neutral-100 px-2.5 py-1 text-xs font-medium text-neutral-700">
+                        <li class="rounded-full bg-pastel-purple/40 px-2.5 py-1 text-xs font-medium text-foreground dark:bg-pastel-purple/30">
                             {tech}
                         </li>
                     ))}

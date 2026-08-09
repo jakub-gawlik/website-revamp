@@ -11,9 +11,11 @@ const { title, description, date, location, cover } = gallery.data;
 ---
 
 <article
-    class="group relative overflow-hidden rounded-lg border border-neutral-200 bg-white transition-shadow hover:shadow-md"
+    class="group relative overflow-hidden rounded-lg border border-pastel-black/10 bg-pastel-white transition-shadow hover:shadow-md dark:border-pastel-white/10 dark:bg-pastel-black/30"
 >
-    <div class="aspect-4/3 overflow-hidden bg-neutral-100">
+    <div
+        class="aspect-4/3 overflow-hidden bg-pastel-black/5 dark:bg-pastel-white/5"
+    >
         <Image
             src={cover}
             alt={title}

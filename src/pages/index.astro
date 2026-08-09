@@ -31,14 +31,18 @@ const posts = (await getCollection("posts"))
 ---
 
 <BaseLayout title="jacob.dev — Developer, Photographer & Traveller">
-    <section class="border-b border-neutral-200 bg-neutral-50">
+    <section
+        class="border-b border-pastel-black/10 bg-pastel-blue/30 dark:border-pastel-white/10 dark:bg-pastel-blue/10"
+    >
         <div class="mx-auto max-w-6xl px-4 py-20 sm:px-6 lg:px-8">
             <h1
                 class="text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl"
             >
                 Developer, photographer<br class="hidden sm:block" /> & traveller.
             </h1>
-            <p class="mt-6 max-w-2xl text-lg leading-relaxed text-neutral-600">
+            <p
+                class="mt-6 max-w-2xl text-lg leading-relaxed text-foreground/70"
+            >
                 I build software, capture moments, and explore the world. This
                 site is a home for my projects, photo galleries, and travel
                 stories.
@@ -46,13 +50,13 @@ const posts = (await getCollection("posts"))
             <div class="mt-8 flex flex-wrap gap-4">
                 <a
                     href="/projects"
-                    class="rounded-lg bg-neutral-900 px-5 py-2.5 text-sm font-medium text-white transition-colors hover:bg-neutral-800"
+                    class="rounded-lg bg-pastel-black px-5 py-2.5 text-sm font-medium text-pastel-white transition-colors hover:bg-pastel-black/80"
                 >
                     View projects
                 </a>
                 <a
                     href="/galleries"
-                    class="rounded-lg border border-neutral-300 bg-white px-5 py-2.5 text-sm font-medium text-neutral-900 transition-colors hover:bg-neutral-50"
+                    class="rounded-lg bg-pastel-black px-5 py-2.5 text-sm font-medium text-pastel-white transition-colors hover:bg-pastel-black/80"
                 >
                     Browse galleries
                 </a>
@@ -69,7 +73,7 @@ const posts = (await getCollection("posts"))
                     </h2>
                     <a
                         href="/projects"
-                        class="text-sm font-medium text-neutral-600 hover:text-neutral-900"
+                        class="text-sm font-medium text-foreground/60 hover:text-foreground"
                     >
                         See all &rarr;
                     </a>
@@ -92,7 +96,7 @@ const posts = (await getCollection("posts"))
                     </h2>
                     <a
                         href="/galleries"
-                        class="text-sm font-medium text-neutral-600 hover:text-neutral-900"
+                        class="text-sm font-medium text-foreground/60 hover:text-foreground"
                     >
                         See all &rarr;
                     </a>
@@ -115,7 +119,7 @@ const posts = (await getCollection("posts"))
                     </h2>
                     <a
                         href="/posts"
-                        class="text-sm font-medium text-neutral-600 hover:text-neutral-900"
+                        class="text-sm font-medium text-foreground/60 hover:text-foreground"
                     >
                         See all &rarr;
                     </a>

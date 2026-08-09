@@ -1,1 +1,58 @@
 @import "tailwindcss";
+
+@theme inline {
+    --color-background: rgb(var(--background));
+    --color-foreground: rgb(var(--foreground));
+
+    --color-pastel-black: rgb(var(--pastel-black));
+    --color-pastel-blue: rgb(var(--pastel-blue));
+    --color-pastel-cyan: rgb(var(--pastel-cyan));
+    --color-pastel-green: rgb(var(--pastel-green));
+    --color-pastel-purple: rgb(var(--pastel-purple));
+    --color-pastel-red: rgb(var(--pastel-red));
+    --color-pastel-white: rgb(var(--pastel-white));
+    --color-pastel-yellow: rgb(var(--pastel-yellow));
+}
+
+:root {
+    /* Pastel light theme */
+    --background: 255 253 248;
+    --foreground: 36 50 71;
+
+    --pastel-black: 31 41 55;
+    --pastel-blue: 185 215 245;
+    --pastel-cyan: 183 227 227;
+    --pastel-green: 195 227 200;
+    --pastel-purple: 216 199 239;
+    --pastel-red: 243 193 193;
+    --pastel-white: 255 255 255;
+    --pastel-yellow: 245 229 168;
+}
+
+.dark {
+    /* Pastel dark theme */
+    --background: 23 34 56;
+    --foreground: 242 245 247;
+
+    --pastel-black: 12 19 32;
+    --pastel-blue: 141 185 232;
+    --pastel-cyan: 143 210 214;
+    --pastel-green: 159 208 170;
+    --pastel-purple: 189 166 221;
+    --pastel-red: 231 166 166;
+    --pastel-white: 248 250 252;
+    --pastel-yellow: 230 207 135;
+}
+
+html {
+    color-scheme: light;
+}
+
+html.dark {
+    color-scheme: dark;
+}
+
+body {
+    background-color: rgb(var(--background));
+    color: rgb(var(--foreground));
+}
